@@ -45,11 +45,10 @@
         "images"
       ]
     },
-    "order": {
+    "orders": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::order.order",
-      "inversedBy": "slug"
+      "relation": "oneToMany",
+      "target": "api::order.order"
     }
   }
 }

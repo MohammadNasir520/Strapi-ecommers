@@ -19,17 +19,11 @@
       "required": true,
       "type": "integer"
     },
-    "slug": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::book.book",
-      "mappedBy": "order"
-    },
     "email": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "mappedBy": "userID"
+      "inversedBy": "orders"
     }
   }
 }

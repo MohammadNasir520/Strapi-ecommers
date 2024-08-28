@@ -428,9 +428,9 @@ export interface ApiBookBook extends Schema.CollectionType {
         number
       >;
     image: Attribute.Media<'images'> & Attribute.Required;
-    order: Attribute.Relation<
+    orders: Attribute.Relation<
       'api::book.book',
-      'manyToOne',
+      'oneToMany',
       'api::order.order'
     >;
     createdAt: Attribute.DateTime;
@@ -457,10 +457,9 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   attributes: {
     transactionID: Attribute.String;
     quantity: Attribute.Integer & Attribute.Required;
-    slug: Attribute.Relation<'api::order.order', 'oneToMany', 'api::book.book'>;
     email: Attribute.Relation<
       'api::order.order',
-      'oneToMany',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
@@ -889,10 +888,10 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    slug: Attribute.UID;
-    userID: Attribute.Relation<
+    slug: Attribute.UID & Attribute.Required;
+    orders: Attribute.Relation<
       'plugin::users-permissions.user',
-      'manyToOne',
+      'oneToMany',
       'api::order.order'
     >;
     createdAt: Attribute.DateTime;
