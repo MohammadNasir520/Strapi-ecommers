@@ -26,6 +26,30 @@
       "type": "boolean",
       "required": true,
       "default": true
+    },
+    "price": {
+      "type": "float",
+      "required": true,
+      "default": 0
+    },
+    "stock": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "slug"
     }
   }
 }
